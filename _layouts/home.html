@@ -6,18 +6,16 @@
 <body>
   {% include header.html %}
   <main>
-    {{ content }}
+<main class="site-main">
+  {{ content }}
 
-    <section>
-      {% for post in site.posts %}
-        <article>
-          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          <p>{{ post.excerpt }}</p>
-          <p><small>{{ post.date | date: "%d.%m.%Y" }}</small></p>
-        </article>
-      {% endfor %}
-    </section>
-  </main>
-  {% include footer.html %}
-</body>
-</html>
+  <section>
+    {% for post in site.posts %}
+      <article>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt }}</p>
+        <p><small>{{ post.date | date: "%d.%m.%Y" }}</small></p>
+      </article>
+    {% endfor %}
+  </section>
+</main>
