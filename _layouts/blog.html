@@ -2,28 +2,14 @@
 <html lang="de">
 <head>
   {% include head.html %}
-  <style>
-    .container { display: flex; gap: 2rem; max-width: 1100px; margin: 2rem auto 0 auto; }
-    .sidebar { width: 250px; flex-shrink: 0; background: #f3f4f6; padding: 1.5rem 1rem; border-radius: 12px; box-shadow: 0 2px 8px #0001; }
-    .sidebar h2 { font-size: 1.15em; margin-top: 0; }
-    .sidebar ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar li { margin-bottom: .7em; }
-    .sidebar a { color: #3b82f6; text-decoration: none; transition: color 0.2s; }
-    .sidebar a:hover { text-decoration: underline; color: #2563eb; }
-    .blog-list { flex: 1; }
-    .blog-list article { background: #fff; border-radius: 12px; padding: 1rem 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px #0001; }
-    @media (max-width: 900px) {
-      .container { flex-direction: column; }
-      .sidebar { width: 100%; margin-bottom: 2rem; }
-    }
-  </style>
 </head>
 <body>
   {% include header.html %}
   <main class="site-main">
     <div class="container">
       <!-- Sidebar mit Liste aller Posts -->
-      <aside class="sidebar">
+      <aside class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Sidebar ein-/ausklappen">&#9776;</button>
         <h2>Alle Beiträge</h2>
         <ul>
           {% for post in site.posts %}
@@ -49,5 +35,6 @@
     </div>
   </main>
   {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
