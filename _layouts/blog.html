@@ -10,7 +10,8 @@
     .sidebar li { margin-bottom: .7em; }
     .sidebar a { color: #3b82f6; text-decoration: none; transition: color 0.2s; }
     .sidebar a:hover { text-decoration: underline; color: #2563eb; }
-    .blog-content { flex: 1; background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px #0001; }
+    .blog-list { flex: 1; }
+    .blog-list article { background: #fff; border-radius: 12px; padding: 1rem 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px #0001; }
     @media (max-width: 900px) {
       .container { flex-direction: column; }
       .sidebar { width: 100%; margin-bottom: 2rem; }
@@ -21,12 +22,12 @@
   {% include header.html %}
   <main class="site-main">
     <div class="container">
-      <!-- Sidebar -->
+      <!-- Sidebar mit Liste aller Posts -->
       <aside class="sidebar">
         <h2>Alle Beiträge</h2>
         <ul>
           {% for post in site.posts %}
-            <li {% if post.url == page.url %}style="font-weight:bold;"{% endif %}>
+            <li>
               <a href="{{ post.url | relative_url }}">
                 {{ post.title }}
               </a>
@@ -34,12 +35,17 @@
           {% endfor %}
         </ul>
       </aside>
-      <!-- Beitrag -->
-      <article class="blog-content">
+      <!-- Blog-Übersicht -->
+      <div class="blog-list">
         <h1>{{ page.title }}</h1>
-        <p><small>{{ page.date | date: "%d.%m.%Y" }}</small></p>
-        {{ content }}
-      </article>
+        {% for post in site.posts %}
+          <article>
+            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            <p>{{ post.excerpt }}</p>
+            <p><small>{{ post.date | date: "%d.%m.%Y" }}</small></p>
+          </article>
+        {% endfor %}
+      </div>
     </div>
   </main>
   {% include footer.html %}
