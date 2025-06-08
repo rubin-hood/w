@@ -194,6 +194,7 @@ h3 {
 
 
 /* SIDEBAR AUSKLAPPBAR (schiebbar, mobilfähig) */
+.container { display: flex; gap: 2rem; max-width: 1100px; margin: 2rem auto 0 auto; }
 .sidebar {
   position: relative;
   width: 250px;
@@ -205,9 +206,15 @@ h3 {
   transition: transform 0.3s cubic-bezier(.7,.2,.2,1), box-shadow 0.3s;
   z-index: 101;
 }
+.sidebar h2 { font-size: 1.15em; margin-top: 0; }
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+.sidebar li { margin-bottom: .7em; }
+.sidebar a { color: #3b82f6; text-decoration: none; transition: color 0.2s; }
+.sidebar a:hover { text-decoration: underline; color: #2563eb; }
+.blog-content { flex: 1; background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px #0001; }
 
 .sidebar-toggle {
-  display: none; /* Wird auf Mobilgeräten sichtbar gemacht */
+  display: none;
   background: none;
   border: none;
   font-size: 2.0rem;
@@ -220,9 +227,7 @@ h3 {
 }
 
 @media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
+  .container { flex-direction: column; }
   .sidebar {
     position: fixed;
     left: 0;
@@ -253,3 +258,4 @@ h3 {
     z-index: 1001;
   }
 }
+
