@@ -31,7 +31,7 @@
       <h2>Alle Beiträge</h2>
       <ul>
         {% for post in site.posts %}
-          <li {% if post.url == page.url %}class="active"{% endif %}>
+          <li {% if post.url = page.url %}class="active"{% endif %}>
             <a href="{{ post.url | relative_url }}">
               {{ post.title }}
             </a>
