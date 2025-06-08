@@ -76,181 +76,98 @@ h3 {
   font-weight: 600;
 }
 
-/* ====== BLOG-KARTEN AUF DER STARTSEITE ====== */
+/* ====== BLOG-KARTEN AUF DER STARTSEITE ========================================== */
 
-/* Äußere Liste aller Blogkarten */
+/* =========== 3-Spalten Grid für Blog-Karten auf der Startseite ========== */
+
+/* Das Grid für die Blog-Karten */
 .blog-preview-list {
-  display: flex;
-  flex-direction: column;     /* Untereinander */
-  gap: 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 Spalten */
+  gap: 2rem;
   margin: 2rem 0;
 }
 
-/* Einzelne Blogkarte */
+/* Einzelne Karte */
 .blog-preview-card {
-  display: flex;              /* Bild und Text nebeneinander */
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 2px 8px #0001;  /* leichter Schatten */
-  padding: 1.5rem 2rem;
-  gap: 1.7rem;
+  box-shadow: 0 2px 16px #0001;
+  padding: 1.2rem 1.2rem 1.7rem 1.2rem;
   border: 1px solid #ececec;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 280px;
 }
 
 .blog-preview-card:hover {
-  box-shadow: 0 4px 16px #0002;
+  box-shadow: 0 6px 20px #0002;
+  transform: translateY(-4px) scale(1.02);
 }
 
-/* Vorschaubild */
 .preview-img-link {
-  display: block;
-  min-width: 110px;
-  max-width: 110px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
-
 .preview-img, .preview-img.empty {
-  width: 110px;
-  height: 110px;
+  width: 80px;
+  height: 80px;
   border-radius: 15px;
   background: #fff;
-  object-fit: cover;             /* Bild wird zugeschnitten/fokussiert */
-  border: 3px solid #222;
+  object-fit: cover;
+  border: 2px solid #ddd;
   box-sizing: border-box;
   display: block;
 }
-
 .preview-img.empty {
   background: #fafafa;
-  border: 2px dashed #ddd;       /* Wenn kein Bild: grauer Platzhalter */
+  border: 2px dashed #ddd;
 }
 
-/* Text neben Bild */
 .preview-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 .preview-text h2 {
-  margin: 0 0 0.4em 0;
-  font-size: 1.7rem;
+  margin: 0 0 0.3em 0;
+  font-size: 1.25rem;
   color: #3b82f6;
   font-weight: 700;
 }
 .preview-date {
-  font-size: 0.95em;
+  font-size: 0.92em;
   color: #888;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.5em;
 }
 
-/* ====== SEITENLEISTE (Sidebar) ====== */
-.container {
-  display: flex;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 2rem auto 0 auto;
-}
-
-.sidebar {
-  width: 250px;
-  flex-shrink: 0;
-  background: #f3f4f6;
-  padding: 1.5rem 1rem;
-  border-radius: 12px;
-  font-size: 1.05em;
-  box-shadow: 0 2px 8px #0001;
-  height: fit-content;
-}
-.sidebar h2 {
-  font-size: 1.15em;
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.sidebar li {
-  margin-bottom: .7em;
-}
-.sidebar a {
-  color: #3b82f6;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.sidebar a:hover {
-  text-decoration: underline;
-  color: #2563eb;
-}
-
-/* Hauptbereich neben Sidebar */
-.blog-content, .blog-list {
-  flex: 1;
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px #0001;
-}
-
-/* ====== BLOGARTIKEL ====== */
-article {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: transparent;      /* Kein weiß hinter Artikeln in Bloglisten */
-}
-
-/* ====== FOOTER ====== */
-footer {
-  font-size: 0.9em;
-  color: #6b7280;
-  margin-top: 2rem;
-  text-align: center;
-  padding: 1rem 0;
-  background: #f9fafb;
-}
-
-/* ====== RESPONSIVES DESIGN (für Handy/Tablets) ====== */
-@media (max-width: 900px) {
-  .container {
-    flex-direction: column;         /* Sidebar über Inhalt */
-    max-width: 95vw;
-    gap: 0.8rem;
-  }
-  .sidebar {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  .blog-content, .blog-list {
-    padding: 1rem;
-  }
-  .site-main {
-    padding: 1rem;
+/* ============ RESPONSIVE: 2 Spalten auf mittleren, 1 Spalte auf kleinen Displays ============ */
+@media (max-width: 1000px) {
+  .blog-preview-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.3rem;
   }
 }
-
 @media (max-width: 700px) {
-  .blog-preview-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+  .blog-preview-list {
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
-  .preview-img-link {
-    min-width: 70px;
-    max-width: 70px;
+  .blog-preview-card {
+    padding: 1rem;
+    min-height: 180px;
   }
   .preview-img, .preview-img.empty {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 10px;
   }
 }
 
-/* ====== BURGER-MENÜ (nur wenn du es nutzt) ====== */
+
+/* ====== BURGER-MENÜ (nur wenn du es nutzt) ========================================== */
 .menu-toggle {
   background: none;
   border: none;
