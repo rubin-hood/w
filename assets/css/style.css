@@ -190,3 +190,80 @@ h3 {
     gap: 0.5rem;
   }
 }
+
+
+/* SIDEBAR ALLGEMEIN */
+.sidebar {
+  position: relative;
+  width: 250px;
+  flex-shrink: 0;
+  background: #f3f4f6;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  border-radius: 16px;
+  font-size: 1.05em;
+  box-shadow: 0 2px 16px #0001;
+  height: fit-content;
+  transition: transform 0.3s cubic-bezier(.7,.2,.2,1), box-shadow 0.3s;
+  z-index: 101;
+}
+
+/* Der Toggle-Button (Hamburger-Menü) */
+.sidebar-toggle {
+  display: none; /* Standard: versteckt (Desktop) */
+  background: none;
+  border: none;
+  font-size: 2.0rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+  z-index: 999;
+  color: #3b82f6;
+}
+
+/* Aktiver Link */
+.sidebar li.active a {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* ========== MOBILE: Sidebar schiebbar ========== */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    /* Sidebar ausgeklappt: von links hereinschieben */
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    width: 240px;
+    padding-top: 2.5rem;
+    transform: translateX(-110%);
+    box-shadow: 4px 0 20px #0002;
+    transition: transform 0.3s cubic-bezier(.7,.2,.2,1), box-shadow 0.3s;
+    z-index: 2000;
+  }
+  .sidebar.open {
+    transform: translateX(0); /* Eingeklappt = sichtbar */
+    box-shadow: 8px 0 32px #0002;
+  }
+  .sidebar-toggle {
+    display: block;
+    left: 1rem;
+    top: 1rem;
+  }
+  .blog-content {
+    margin-left: 0;
+  }
+  /* Optional: Bei offener Sidebar Hintergrund abdunkeln */
+  body.sidebar-backdrop::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: #0006;
+    z-index: 1001;
+  }
+}

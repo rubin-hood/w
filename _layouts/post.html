@@ -17,31 +17,36 @@
     }
   </style>
 </head>
+
 <body>
   {% include header.html %}
-  <main class="site-main">
-    <div class="container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <h2>Alle Beiträge</h2>
-        <ul>
-          {% for post in site.posts %}
-            <li {% if post.url == page.url %}style="font-weight:bold;"{% endif %}>
-              <a href="{{ post.url | relative_url }}">
-                {{ post.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </aside>
-      <!-- Beitrag -->
-      <article class="blog-content">
-        <h1>{{ page.title }}</h1>
-        <p><small>{{ page.date | date: "%d.%m.%Y" }}</small></p>
-        {{ content }}
-      </article>
-    </div>
-  </main>
+<main class="site-main">
+  <div class="container">
+    <!-- Sidebar (ausklappbar) -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Sidebar ein-/ausklappen">
+        &#9776; <!-- Hamburger-Icon -->
+      </button>
+      <h2>Alle Beiträge</h2>
+      <ul>
+        {% for post in site.posts %}
+          <li {% if post.url == page.url %}class="active"{% endif %}>
+            <a href="{{ post.url | relative_url }}">
+              {{ post.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
+    <!-- Hauptinhalt -->
+    <article class="blog-content">
+      <h1>{{ page.title }}</h1>
+      <p><small>{{ page.date | date: "%d.%m.%Y" }}</small></p>
+      {{ content }}
+    </article>
+  </div>
+</main>
   {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
