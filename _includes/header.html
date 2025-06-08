@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-left">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo" class="logo">
+      </a>
+    </div>
+    <nav class="header-right">
+      <ul class="menu">
+        <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+        <li><a href="{{ '/about' | relative_url }}">About</a></li>
+        <li><a href="{{ '/projekte' | relative_url }}">Projekte</a></li>
+      </ul>
+      <!-- Burger-Menü für mobile -->
+      <button class="menu-toggle" aria-label="Menü öffnen">&#9776;</button>
+    </nav>
+  </div>
+</header>
